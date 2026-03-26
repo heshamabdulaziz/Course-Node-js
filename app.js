@@ -5,8 +5,11 @@ const http=require("http")
 
 const server=http.createServer((req,res)=>{
 // create server
-res.write("<h2> hi from server");
-res.write("how i can help you");
+res.setHeader("Content-Type","text/html")
+const header=req.headers;
+res.write("<h2> hi from server</h2>");
+res.write("<h2>how i can help you\n");
+res.write(`${header}`);
 res.end()
 
 })
