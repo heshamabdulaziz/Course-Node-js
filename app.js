@@ -1,3 +1,5 @@
-console.log("introduction to node js ");
-console.log("Node js is javescript runtime");
-console.log("Node js work out of browser");
+
+//  global==window in browser
+//// process==document in browser
+console.log("welecome to learn node js");
+
