@@ -10,9 +10,15 @@ res.setHeader("Content-Type","text/html")
 res.statusCode=200
 // 200 ok 
 //404  not found
-const header=req.headers;
-res.write("<h2> hi from server</h2>");
-res.write("<h2>how i can help you\n");
+//400 eeror
+//500
+// req.url return endpoint
+//req.method return method( get or post or put or delete)
+if(req.url==="/"){
+res.write(`<h2> Home page  AND Metod :  ${req.method}</h2>`);}
+
+if(req.url==="/about"){
+res.write(`<h2> About page  AND Metod :  ${req.method}</h2>`);}
 
 res.end()
 
