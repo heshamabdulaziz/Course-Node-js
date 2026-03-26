@@ -7,3 +7,23 @@ in node js there  are three typs of modules
 
 
 */
+// ways to do export
+const  var1=10;
+const var2=20;
+
+const  var3=40;
+const var4=55
+function sum(v1,v2){
+return v1+v2;
+
+}
+  multi=(v1,v2)=>v1*v2;
+
+ module.exports={
+var1,var2,var4,sum,multi
+
+ }
+
+ // anther way 
+ module.exports.var3=44;
+ 

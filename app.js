@@ -1,5 +1,8 @@
+const app=require("express");
 
-//  global==window in browser
-//// process==document in browser
-console.log("welecome to learn node js");
+const vars=require("./modules");
+
+console.log(vars);
+console.log(vars.sum(10,40));
+console.log(vars.multi(10,40));
 
