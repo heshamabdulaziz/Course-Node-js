@@ -2,15 +2,32 @@
 const express=require("express");
 const app=express()
 const aboutRouter=require("./routing/aboutRouter")
-// express buit by middlewar 
-//middleware is funation excute with each  comming request from client
-// all requst methods GET,POST,PUT ,DELETE ,PATCH IN express
+const bodyparser=require("body-parser")
 
-app.get("/",(req,res,next)=>{
-       console.log("hello from m1");
-      res.send("<h1>hello from m1</h1>")
+const bodypars=bodyparser.urlencoded({extended:true})
+//app.use(express.json()) we use it if data was json
+//app.use(express.json()); use for json data
+//body-parser use to get form data
+
+app.get("/",(req,res)=>{
+    res.setHeader('Content-Type', 'text/html');
+
+       res.write('<form action="/" method="post">')
+       res.write('<input type="text"  name="userName" placeholder="Enter your name "/>')
+       res.write('<input type="number" name="age" placeholder="Enter your age "/>')
+      res.write('<input type="submit">') 
+     res.write('</form>')
+      res.end();
      })
+app.post('/',bodypars,(req,res)=>{
+    const {userName,age}=req.body;
+    console.log(userName,age);
+    res.send("DONE")
+    
 
+
+
+})
 // aboutRouter
 app.use("/about",aboutRouter);
 
