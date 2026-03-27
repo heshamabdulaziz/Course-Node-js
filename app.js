@@ -18,9 +18,12 @@ if(req.url==="/"){
 res.write(`<h2> Home page  AND Metod :  ${req.method}</h2>`);}
 
 if(req.url==="/about"){
-res.write(`<h2> About page  AND Metod :  ${req.method}</h2>`);}
 
-res.end()
+// send()  same write() but no need to add end() or handle the header content
+//setHeader("Content-Type","text/html")
+res.send(`<h2> About page  AND Metod :  ${req.method}</h2>`);}
+
+
 
 })
 const port=4000;
