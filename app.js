@@ -8,7 +8,8 @@ app.set("views","view")// path of my files
 app.use(express.static(path.join(__dirname,'statics')))
 // to access to serve files like css or js we use express.static() middleware
 const aboutRouter=require("./routing/aboutRouter")
-const bodyparser=require("body-parser")
+const bodyparser=require("body-parser");
+
 
 const bodypars=bodyparser.urlencoded({extended:true})
 app.get("/",(req,res)=>{
@@ -19,7 +20,8 @@ res.render('index')
 app.post('/',bodypars,(req,res)=>{
     const {userName,age}=req.body;
     console.log(userName,age);
-    res.send("DONE")
+    //res.send("DONE")
+    res.render('index',{userName:req.body.userName,Age:age})
     
 
 
