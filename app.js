@@ -17,7 +17,7 @@ const bodypars=bodyparser.urlencoded({extended:true})
 
 app.get("/",(req,res)=>{
 
-res.sendFile(path.join(__dirname,'views','index.html'))
+res.sendFile(path.join(__dirname,'views','html5.pdf'))
      })
     
 app.post('/',bodypars,(req,res)=>{
