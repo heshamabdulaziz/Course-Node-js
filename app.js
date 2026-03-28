@@ -2,7 +2,7 @@
 const express=require("express");
 const path=require("path")
 const app=express()
-app.use(express.static(path.join(__dirname,'static')))
+app.use(express.static(path.join(__dirname,'statics')))
 // to access to serve files like css or js we use express.static() middleware
 const aboutRouter=require("./routing/aboutRouter")
 const bodyparser=require("body-parser")
@@ -10,7 +10,7 @@ const bodyparser=require("body-parser")
 const bodypars=bodyparser.urlencoded({extended:true})
 app.get("/",(req,res)=>{
 
-res.sendFile(path.join(__dirname,'views','index.html')) 
+res.sendFile(path.join(__dirname,'view','index.html')) 
      })
     
 app.post('/',bodypars,(req,res)=>{
