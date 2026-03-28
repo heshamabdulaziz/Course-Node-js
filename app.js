@@ -2,22 +2,15 @@
 const express=require("express");
 const path=require("path")
 const app=express()
+app.use(express.static(path.join(__dirname,'static')))
+// to access to serve files like css or js we use express.static() middleware
 const aboutRouter=require("./routing/aboutRouter")
 const bodyparser=require("body-parser")
 
 const bodypars=bodyparser.urlencoded({extended:true})
-//app.use(express.json()) we use it if data was json
-//app.use(express.json()); use for json data
-//body-parser use to get form data
-// anthor way to send html file to browser
- //- sendfile()and use core  path module  to access my file path  
- //path.join this property talk many path and join it togther depend on  system (linux or windos ,or 
- // for exmpe in widow "\..\..\" but in linux "/.../...")
-  // __direname return my project path 
-
 app.get("/",(req,res)=>{
 
-res.sendFile(path.join(__dirname,'views','html5.pdf'))
+res.sendFile(path.join(__dirname,'views','index.html')) 
      })
     
 app.post('/',bodypars,(req,res)=>{

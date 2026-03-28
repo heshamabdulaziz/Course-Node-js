@@ -1,0 +1,8 @@
+body{
+    background-color: red;
+   
+}
+#form{
+    display: flex;
+    text-align: center;
+    align-content: center;}
