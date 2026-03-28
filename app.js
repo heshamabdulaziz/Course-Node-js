@@ -1,5 +1,6 @@
 // Start with Express
 const express=require("express");
+const path=require("path")
 const app=express()
 const aboutRouter=require("./routing/aboutRouter")
 const bodyparser=require("body-parser")
@@ -8,17 +9,17 @@ const bodypars=bodyparser.urlencoded({extended:true})
 //app.use(express.json()) we use it if data was json
 //app.use(express.json()); use for json data
 //body-parser use to get form data
+// anthor way to send html file to browser
+ //- sendfile()and use core  path module  to access my file path  
+ //path.join this property talk many path and join it togther depend on  system (linux or windos ,or 
+ // for exmpe in widow "\..\..\" but in linux "/.../...")
+  // __direname return my project path 
 
 app.get("/",(req,res)=>{
-    res.setHeader('Content-Type', 'text/html');
 
-       res.write('<form action="/" method="post">')
-       res.write('<input type="text"  name="userName" placeholder="Enter your name "/>')
-       res.write('<input type="number" name="age" placeholder="Enter your age "/>')
-      res.write('<input type="submit">') 
-     res.write('</form>')
-      res.end();
+res.sendFile(path.join(__dirname,'views','index.html'))
      })
+    
 app.post('/',bodypars,(req,res)=>{
     const {userName,age}=req.body;
     console.log(userName,age);
