@@ -15,7 +15,15 @@ app.get("/user",(req,res)=>{
      })
     // he we can use postman to test end points
 app.post('/user',bodypars,(req,res)=>{
-    const {userName,age}=req.body;
+   //verify token 
+   let token=req.header("Authorization");
+   try {
+    let data=jwt.verify(token,securetky)
+    res.json(data)
+   } catch (error) {
+    res.json({user:false})
+   }
+  
 res.json(req.body)
 
 })
