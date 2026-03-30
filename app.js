@@ -16,6 +16,14 @@ app.get("/",(req,res)=>{
 
 res.render('index',{pagetitle:'Home'})
      })
+//here name&age params
+app.get("/:name/:age",(req,res)=>{
+    // extract params
+    const {name,age}=req.params;
+
+ res.render('index',{userName:name,Age:age,pagetitle:'Home'})
+    
+     })
     
 app.post('/',bodypars,(req,res)=>{
     const {userName,age}=req.body;
