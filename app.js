@@ -1,13 +1,17 @@
 // Start with Express
 const express=require("express");
+const jwt=require("jsonwebtoken")
 const app=express()
 const aboutRouter=require("./routing/aboutRouter")
 const bodyparser=require("body-parser");
 // here  handle  to  json data by body persar
 const bodypars=bodyparser.json({extended:true}) 
 // also we can use express.json() midleware
+const securetky="hi hesham this securetky" // have to save in dotenv
 app.get("/user",(req,res)=>{
-   res.json({ "name":"hesham","age":"38" });
+    //create token with sign(payload,secretkey,expersIn)
+    let token=jwt.sign({"name":"hesham","age":38},securetky,{expiresIn:'1h'})
+   res.json({"token":token});
      })
     // he we can use postman to test end points
 app.post('/user',bodypars,(req,res)=>{
