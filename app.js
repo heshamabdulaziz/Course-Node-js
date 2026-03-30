@@ -14,14 +14,14 @@ const bodyparser=require("body-parser");
 const bodypars=bodyparser.urlencoded({extended:true})
 app.get("/",(req,res)=>{
 
-res.render('index')
+res.render('index',{pagetitle:'Home'})
      })
     
 app.post('/',bodypars,(req,res)=>{
     const {userName,age}=req.body;
     console.log(userName,age);
     //res.send("DONE")
-    res.render('index',{userName:req.body.userName,Age:age})
+    res.render('index',{userName:req.body.userName,Age:age,pagetitle:'Home'})
     
 
 
