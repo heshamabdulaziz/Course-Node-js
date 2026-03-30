@@ -13,6 +13,9 @@ const bodyparser=require("body-parser");
 
 const bodypars=bodyparser.urlencoded({extended:true})
 app.get("/",(req,res)=>{
+   // http://localhost:4000/?q='sport'&team='ryal madriad'
+   console.log(req.query);
+
 
 res.render('index',{pagetitle:'Home'})
      })
