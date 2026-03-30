@@ -1,52 +1,25 @@
 // Start with Express
 const express=require("express");
-const path=require("path")
 const app=express()
-// settigng   Template Engines ejs
-app.set("view engine","ejs")//ejs engine
-app.set("views","view")// path of my files
-app.use(express.static(path.join(__dirname,'statics')))
-// to access to serve files like css or js we use express.static() middleware
 const aboutRouter=require("./routing/aboutRouter")
 const bodyparser=require("body-parser");
-
-
-const bodypars=bodyparser.urlencoded({extended:true})
+// here  handle  to  json data by body persar
+const bodypars=bodyparser.json({extended:true}) 
+// also we can use express.json() midleware
 app.get("/",(req,res)=>{
-   // http://localhost:4000/?q='sport'&team='ryal madriad'
-   console.log(req.query);
-
-res.render('index',{pagetitle:'Home'})
+   res.json({ "name":"hesham","age":"38" });
      })
-     app.get("/to-home",(req,res)=>{
-   
-
-res.redirect(301,'/')
-     })
-//here name&age params
-app.get("/:name/:age",(req,res)=>{
-    // extract params
-    const {name,age}=req.params;
-
- res.render('index',{userName:name,Age:age,pagetitle:'Home'})
-    
-     })
-    
+    // he we can use postman to test end points
 app.post('/',bodypars,(req,res)=>{
     const {userName,age}=req.body;
-    console.log(userName,age);
-    //res.send("DONE")
-    res.render('index',{userName:req.body.userName,Age:age,pagetitle:'Home'})
-    
-
-
+res.json(req.body)
 
 })
 // aboutRouter
 app.use("/about",aboutRouter);
 
-    // if routing error return 404 handle error 
-    app.use((req,res)=>{
+// if routing error return 404 handle error 
+ app.use((req,res)=>{
    
     res.send("<h1>page not found 404</h1>")
     })
