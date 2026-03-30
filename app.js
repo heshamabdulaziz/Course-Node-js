@@ -16,8 +16,12 @@ app.get("/",(req,res)=>{
    // http://localhost:4000/?q='sport'&team='ryal madriad'
    console.log(req.query);
 
-
 res.render('index',{pagetitle:'Home'})
+     })
+     app.get("/to-home",(req,res)=>{
+   
+
+res.redirect(301,'/')
      })
 //here name&age params
 app.get("/:name/:age",(req,res)=>{
