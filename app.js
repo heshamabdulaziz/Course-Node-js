@@ -6,11 +6,16 @@ const bodyparser=require("body-parser");
 // here  handle  to  json data by body persar
 const bodypars=bodyparser.json({extended:true}) 
 // also we can use express.json() midleware
-app.get("/",(req,res)=>{
+app.get("/user",(req,res)=>{
    res.json({ "name":"hesham","age":"38" });
      })
     // he we can use postman to test end points
-app.post('/',bodypars,(req,res)=>{
+app.post('/user',bodypars,(req,res)=>{
+    const {userName,age}=req.body;
+res.json(req.body)
+
+})
+app.delete('/user',bodypars,(req,res)=>{
     const {userName,age}=req.body;
 res.json(req.body)
 
