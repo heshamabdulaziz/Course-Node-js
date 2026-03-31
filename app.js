@@ -3,6 +3,17 @@ require("dotenv").config()
 const express=require("express");
 const jwt=require("jsonwebtoken")
 const app=express()
+
+// sock io doeno support express but we use http and pass express app to https server
+const server=require("http").createServer(app)
+const socketIo=require("socket.io");
+// call socketIo as fn and give my server
+const io=socketIo(server);
+// listen to client 
+io.on("connection",(client)=>{
+
+})
+
 const aboutRouter=require("./routing/aboutRouter")
 const bodyparser=require("body-parser");
 // here  handle  to  json data by body persar
@@ -45,7 +56,7 @@ app.use("/about",aboutRouter);
 
 const port=4000;
 // run server
-app.listen(port,()=>{
+server.listen(port,()=>{
 
     console.log(`Server run on port ${port}  with express `);
     
