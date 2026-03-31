@@ -8,16 +8,21 @@
 <body>
     <h1>client Socket </h1>
 
-
+<button onclick="send()">send</button>
 
     <script src="/socket.io/socket.io.js"> </script>
+
     <script>
   let socket= io();
   socket.on("connect",()=>{
-console.log("connected");
+  console.log("connected");
 
-
-  })
+  });
+ function send(){
+// call this event
+// mean call clientEmit  which is in server
+    socket.emit("clientEmit",{name:"Heham",age:38});
+} 
 
     </script>
 

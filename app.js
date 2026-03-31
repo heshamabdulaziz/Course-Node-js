@@ -11,8 +11,13 @@ const io=socketIo(server);
 //  connection in server
 // connect on client
 // listen to any  connection 
-io.on("connection",(client)=>{
+io.on("connection",socket=>{
 console.log('New client connected');
+// listen 
+socket.on("clientEmit",(data)=>{
+    console.log("event and data recieved"+"    ", data);
+    
+});
 
 })
 
