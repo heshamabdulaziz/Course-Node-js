@@ -1,10 +1,9 @@
-// Start with Express
-require("dotenv").config()
+
 const express=require("express");
-const jwt=require("jsonwebtoken")
+const path=require("path")
 const app=express()
 
-// sock io doeno support express but we use http and pass express app to https server
+// socket io does not support express but we use http and pass express app to https server
 const server=require("http").createServer(app)
 const socketIo=require("socket.io");
 // call socketIo as fn and give my server
@@ -17,45 +16,10 @@ console.log('New client connected');
 
 })
 
-const aboutRouter=require("./routing/aboutRouter")
-const bodyparser=require("body-parser");
-// here  handle  to  json data by body persar
-const bodypars=bodyparser.json({extended:true}) 
-// also we can use express.json() midleware
-//const securetky="hi hesham this securetky" // have to save in dotenv
-app.get("/user",(req,res)=>{
-    //create token with sign(payload,secretkey,expersIn)
-    //process.env.securetky
-    let token=jwt.sign({"name":"hesham","age":38},process.env.SECURITKEY,{expiresIn:'1h'})
-   res.json({"token":token});
-     })
-    // he we can use postman to test end points
-app.post('/user',bodypars,(req,res)=>{
-   //verify token 
-   let token=req.header("Authorization");
-   try {
-    let data=jwt.verify(token,process.env.SECURITKEY)
-    res.json(data)
-   } catch (error) {
-    res.json({user:false})
-   }
+app.get("/",(req,res)=>{
   
-res.json(req.body)
-
-})
-app.delete('/user',bodypars,(req,res)=>{
-    const {userName,age}=req.body;
-res.json(req.body)
-
-})
-// aboutRouter
-app.use("/about",aboutRouter);
-
-// if routing error return 404 handle error 
- app.use((req,res)=>{
-   
-    res.send("<h1>page not found 404</h1>")
-    })
+   res.sendFile(path.join(__dirname,"index.html"));
+     })
 
 const port=4000;
 // run server
