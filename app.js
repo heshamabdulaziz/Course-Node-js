@@ -17,8 +17,8 @@ console.log('New client connected');
 socket.on("clientEmit",(data)=>{
     console.log("event and data recieved"+"    ", data);
 
-    socket.emit("serverEvent");
-     //io.emit("serverEvent");
+    // socket.emit("serverEvent");
+     io.emit("serverEvent");
 
     // socket.broadcast.emit("serverEvent");
 
