@@ -9,8 +9,11 @@ const server=require("http").createServer(app)
 const socketIo=require("socket.io");
 // call socketIo as fn and give my server
 const io=socketIo(server);
-// listen to client 
+//  connection in server
+// connect on client
+// listen to any  connection 
 io.on("connection",(client)=>{
+console.log('New client connected');
 
 })
 
