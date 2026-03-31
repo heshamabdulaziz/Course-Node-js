@@ -16,9 +16,23 @@ console.log('New client connected');
 // listen 
 socket.on("clientEmit",(data)=>{
     console.log("event and data recieved"+"    ", data);
+
+     //socket.emit("serverEvent");
+     //io.emit("serverEvent");
+
+     socket.broadcast.emit("serverEvent");
+    /* there three ways to make emit from server to client 
+    1-socket  .emit() make emit just to currently client
+    2- io.emit() make emit to  clients
+    3-socket .broadcast.emit() make emit to  clients excpt currently client
+    
+    
+    */
+    
     
 });
 
+//
 })
 
 app.get("/",(req,res)=>{

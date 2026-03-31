@@ -18,6 +18,11 @@
   console.log("connected");
 
   });
+
+  socket.on("serverEvent",()=>{
+console.log("event receved call from server")
+
+  })
  function send(){
 // call this event
 // mean call clientEmit  which is in server
