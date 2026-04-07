@@ -22,3 +22,8 @@ console.log("*******   OS modules   ****************");
 // os modules 
 
  require("./osModules")
+
+  
+console.log("*******        PATH  module   ****************");
+// path modules 
+require("./pathModules")
