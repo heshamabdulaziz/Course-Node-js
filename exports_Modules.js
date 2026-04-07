@@ -1,5 +1,5 @@
 // first way 
-
+constfirstName="hesham ";
 const lastName="Abdulaziz";
 
 //second way 
@@ -7,4 +7,6 @@ const lastName="Abdulaziz";
 module.exports={
 lastName,
 }
-module.exports.firstName="hesham ";
+//module.exports.firstName="hesham ";
+// third way
+module.exports.firstName="hesham";
